@@ -1,4 +1,4 @@
-# Fibber
+# Fibber (INCOMPLETE)
 
 ---
 > _Fibber_ is a command line program that calculates and prints the [Fibbinacci Sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence) in a customizable fasion.
