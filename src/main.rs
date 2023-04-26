@@ -7,6 +7,7 @@ pub mod args;
 pub mod constants;
 pub mod fib;
 pub mod options;
+pub mod print;
 
 use clap::Parser;
 pub use options::Verbosity;
@@ -53,10 +54,13 @@ fn main() {
 		last_only: args.last_only,
 	};
 
+	// if verbose, print out the config object
 	if config.verbosity == Verbosity::Verbose {
 		println!("Config: {:?}", config);
 	}
 
-	let mom = fib::fibbinacci(5);
-	println!("mom: {:?}", mom);
+	match config.last_only {
+		true => print::print_fib_n(fib::n_fibbinacci(config.count), config.count, &config),
+		false => print::print_fib_seq(fib::fibbinacci(config.count), &config),
+	}
 }

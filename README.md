@@ -1,4 +1,4 @@
-# Fibber (INCOMPLETE)
+# Fibber (COMPLETE)
 
 ---
 > _Fibber_ is a command line program that calculates and prints the [Fibbinacci Sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence) in a customizable fasion.
@@ -12,7 +12,7 @@ The name "fibber" was chosen for two reasons:
 2) i believe having a product name is important, even if it's cheesy :)
 
 The design of the codebase is dynamic, implimenting both Object-Oriented-Programming principals, and
-Functionally-Oriented-Programming principals.
+Functionally-Oriented-Programming principals, each where is most efficient in a modern programming setting.
 
 ## Running
 
@@ -62,6 +62,7 @@ cargo build
 
 In this case, args can simply be appended to the path of the executable, as is standard.
 
-## Usage
+## Limitations
 
-<!-- TODO -->
+`--count` must be <= 46, as anything greater will cause the fibbinacci numbers generated to exceed
+the allocation size of `usize` (`usize` is an internal primitive rust type equal to the OS-ARCH (e.g, 32 bit or 64 bit))
