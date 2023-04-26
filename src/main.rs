@@ -1,83 +1,58 @@
-#[macro_use]
-extern crate log;
-extern crate env_logger;
-#[macro_use]
+/// external crate imports
 extern crate clap;
-#[macro_use]
-extern crate error_chain;
-extern crate colored;
+extern crate once_cell;
 
-mod app;
+/// internal module declarations
+pub mod args;
+pub mod constants;
+pub mod options;
 
-use std::env;
-use app::App;
-use errors::*;
-use log::{LogRecord, LogLevel};
-use env_logger::LogBuilder;
-use colored::Colorize;
+use clap::Parser;
+pub use options::Verbosity;
 
-/// Representation of library errors
-pub mod errors {
-    error_chain!{}
+use crate::args::Cli;
+
+/// Global configuration object
+#[derive(Debug, Default)]
+pub struct Config {
+	/// log verbosity level
+	pub verbosity: options::Verbosity,
+
+	/// the length of the sequence to output, i.e.:
+	/// 0, 1, 1, 2, 3, 5 would be the result of -c 6
+	pub count: u8,
+
+	/// Print on one line
+	pub one_line: bool,
+
+	/// Preface each number in the sequence with it's position within the sequence, i.e:
+	/// `1:0, 2:1, 3:1, 4:2, 5:3, 6:5`
+	pub numbering: bool,
+
+	/// Print only the last number of the sequence for the given count
+	pub last_only: bool,
 }
 
+/// program entrypoint
 fn main() {
-    initialize_logger();
+	// parse the command line arguments
+	let args = Cli::parse();
 
-    if let Err(ref e) = run() {
-        println!("error: {}", e);
+	// create the configuration object with the values from the parsed and cleansed cli args
+	// data validation matters!!! :)
+	let config = Config {
+		verbosity: match (args.quiet, args.verbose) {
+			(true, _) => Verbosity::Quiet,
+			(_, true) => Verbosity::Verbose,
+			(false, false) => Verbosity::Normal,
+		},
+		count: args.count,
+		one_line: args.one_line,
+		numbering: args.numbering,
+		last_only: args.last_only,
+	};
 
-        for e in e.iter().skip(1) {
-            println!("caused by: {}", e);
-        }
-
-        if let Some(backtrace) = e.backtrace() {
-            println!("backtrace: {:?}", backtrace);
-        }
-
-        ::std::process::exit(1);
-    }
-}
-
-fn run() -> Result<()> {
-    let yaml = load_yaml!("cli.yml");
-    let matches = clap::App::from_yaml(yaml).get_matches();
-
-    let cli_app = App;
-    cli_app.run_command(&matches)?;
-
-    Ok(())
-}
-
-fn initialize_logger() {
-    let format = |record: &LogRecord| match record.level() {
-        LogLevel::Warn => {
-            format!("{} {}",
-                    "WARN:".bold().yellow(),
-                    record.args().to_string().yellow())
-        }
-        LogLevel::Error => {
-            format!("{} {}",
-                    "ERR:".bold().red(),
-                    record.args().to_string().red())
-        }
-        LogLevel::Info => {
-            format!("{} {}",
-                    "ERR:".bold().green(),
-                    record.args().to_string().green())
-        }
-        LogLevel::Debug => format!("{} {}", "DEBUG:".bold(), record.args().to_string().bold()),
-        _ => format!("{}: {}", record.level(), record.args()),
-    };
-    let mut builder = LogBuilder::new();
-
-    let builder_state = if let Ok(env_log) = env::var("RUST_LOG") {
-        builder.format(format).parse(&env_log).init()
-    } else {
-        builder.format(format).init()
-    };
-
-    if let Err(e) = builder_state {
-        println!("Could not initialize logger: {}", e);
-    }
+	if config.verbosity == Verbosity::Verbose {
+		println!("Config: {:?}", config);
+	}
 }
