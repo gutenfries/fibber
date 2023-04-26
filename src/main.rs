@@ -5,6 +5,7 @@ extern crate once_cell;
 /// internal module declarations
 pub mod args;
 pub mod constants;
+pub mod fib;
 pub mod options;
 
 use clap::Parser;
@@ -20,7 +21,7 @@ pub struct Config {
 
 	/// the length of the sequence to output, i.e.:
 	/// 0, 1, 1, 2, 3, 5 would be the result of -c 6
-	pub count: u8,
+	pub count: u32,
 
 	/// Print on one line
 	pub one_line: bool,
@@ -55,4 +56,7 @@ fn main() {
 	if config.verbosity == Verbosity::Verbose {
 		println!("Config: {:?}", config);
 	}
+
+	let mom = fib::fibbinacci(5);
+	println!("mom: {:?}", mom);
 }

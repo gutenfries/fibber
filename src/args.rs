@@ -21,7 +21,7 @@ pub struct Cli {
 	/// the length of the sequence to output, i.e.:
 	/// 0, 1, 1, 2, 3, 5 would be the result of -c 6
 	#[clap(short = 'c', long, required = true)]
-	pub count: u8,
+	pub count: u32,
 
 	/// Print on one line
 	#[clap(short = '1', long, required = false, default_value_t = false)]
