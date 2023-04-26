@@ -8,9 +8,9 @@
 ///
 /// ## Returns:
 ///
-/// - `Vec<u32>` the calculated sequence
-pub fn fibbinacci(n: u32) -> Vec<u32> {
-	let mut sequence: Vec<u32> = Vec::with_capacity(n as usize);
+/// - `Vec<u128>` the calculated sequence
+pub fn fibbinacci(n: u128) -> Vec<u128> {
+	let mut sequence: Vec<u128> = Vec::with_capacity(n as usize);
 
 	let mut prev = 0;
 	let mut next = 1;
@@ -43,8 +43,8 @@ pub fn fibbinacci(n: u32) -> Vec<u32> {
 /// - `n`: the nth number of the sequence to return
 ///
 /// ## Returns:
-/// ` `u32`: the nth term of the sequence
-pub fn n_fibbinacci(n: u32) -> u32 {
+/// ` `u128`: the nth term of the sequence
+pub fn n_fibbinacci(n: u128) -> u128 {
 	let mut prev = 0;
 	let mut next = 1;
 
