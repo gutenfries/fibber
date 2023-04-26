@@ -68,28 +68,6 @@ In this case, args can simply be appended to the path of the executable, as is s
 the allocation size of of a unsigned 128-bit integer (unsigned long long)
 
 ---
----
-
-## examples
-
-output of running `fibber --help`:
-
-```console
-Fibber v0.1.0:
-
-
-Usage: fibber [OPTIONS] --count <COUNT>
-
-Options:
-  -v, --verbose        Explicitly set the log level to verbose
-  -q, --quiet          Explicitly set the log level to quiet (overrides verbose)
-  -c, --count <COUNT>  the length of the sequence to output, i.e.: 0, 1, 1, 2, 3, 5 would be the result of -c 6
-  -1, --one-line       Print on one line
-      --numbering      Preface each number in the sequence with it's position within the sequence, i.e: 1:0, 2:1, 3:1, 4:2, 5:3, 6:5
-      --last-only      Print only the last number of the sequence for the given count
-  -h, --help           Print help
-  -V, --version        Print version
-```
 
 ## Screenshots
 
@@ -106,4 +84,14 @@ Options:
 ### count 13
 
 ![count 13](docs/Screenshot%202023-04-26%20110226.png)
+---
+
+### help message
+
+![help message](docs/HELPScreenshot%202023-04-26%20154207.png)-
+---
+
+### Big numbers
+
+![Alt text](docs/akjsdbfScreenshot%202023-04-26%20154545.png)
 ---
