@@ -1,11 +1,12 @@
 [package]
-name = "TODO"
+name = "fibber"
 version = "0.1.0"
 authors = ["marc gutenberger <gutenfries@gmail.com>"]
 
 [dependencies]
-clap = { version = "^2.0", features = ["yaml"] }
-error-chain = "^0.10"
-log = "^0.3"
-env_logger = "^0.4"
-colored = "^1.5"
+clap = { version = "4.0.18", features = ["derive", "cargo"] }
+once_cell = "1.8.0"
+
+[[bin]]
+name = "fibber"
+path = "src/main.rs"
