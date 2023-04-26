@@ -1,14 +1,14 @@
 # Fibber (COMPLETE)
 
 ---
-> _Fibber_ is a command line program that calculates and prints the [Fibbinacci Sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence) in a customizable fasion.
+> _Fibber_ is a command line program that calculates and prints the [fibonacci Sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence) in a customizable fasion.
 ---
 
 ## Summary of development
 
 The name "fibber" was chosen for two reasons:
 
-1) using `_` or `-` can often lead to unneccary confusion & issues in executable names. (e.g., "fibbinacci_gen")
+1) using `_` or `-` can often lead to unneccary confusion & issues in executable names. (e.g., "fibonacci_gen")
 2) i believe having a product name is important, even if it's cheesy :)
 
 The design of the codebase is dynamic, implimenting both Object-Oriented-Programming principals, and
@@ -64,7 +64,7 @@ In this case, args can simply be appended to the path of the executable, as is s
 
 ## Limitations
 
-`--count` must be <= 186, as anything greater will cause the fibbinacci numbers generated to exceed
+`--count` must be <= 186, as anything greater will cause the fibonacci numbers generated to exceed
 the allocation size of of a unsigned 128-bit integer (unsigned long long)
 
 ---

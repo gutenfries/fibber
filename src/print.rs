@@ -45,7 +45,7 @@ pub fn print_fib_seq(seq: Vec<u128>, config: &Config) {
 /// ## args:
 ///
 /// - `n`: the value to outut
-/// - `pos`: the position of the value in the fibbinacci sequence
+/// - `pos`: the position of the value in the fibonacci sequence
 /// - `config` a pointer to the config object
 pub fn print_fib_n(n: u128, pos: u128, config: &Config) {
 	match config.numbering {

@@ -9,7 +9,7 @@
 /// ## Returns:
 ///
 /// - `Vec<u128>` the calculated sequence
-pub fn fibbinacci(n: u128) -> Vec<u128> {
+pub fn fibonacci(n: u128) -> Vec<u128> {
 	let mut sequence: Vec<u128> = Vec::with_capacity(n as usize);
 
 	let mut prev = 0;
@@ -34,7 +34,7 @@ pub fn fibbinacci(n: u128) -> Vec<u128> {
 	sequence
 }
 
-/// calculates the nth fibbinacci number
+/// calculates the nth fibonacci number
 ///
 /// runtime complexity: O(n)
 ///
@@ -44,7 +44,7 @@ pub fn fibbinacci(n: u128) -> Vec<u128> {
 ///
 /// ## Returns:
 /// ` `u128`: the nth term of the sequence
-pub fn n_fibbinacci(n: u128) -> u128 {
+pub fn n_fibonacci(n: u128) -> u128 {
 	let mut prev = 0;
 	let mut next = 1;
 

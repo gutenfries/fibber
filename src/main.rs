@@ -60,7 +60,7 @@ fn main() {
 	}
 
 	match config.last_only {
-		true => print::print_fib_n(fib::n_fibbinacci(config.count), config.count, &config),
-		false => print::print_fib_seq(fib::fibbinacci(config.count), &config),
+		true => print::print_fib_n(fib::n_fibonacci(config.count), config.count, &config),
+		false => print::print_fib_seq(fib::fibonacci(config.count), &config),
 	}
 }
